@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('news/create', 'Admin\NewsController@add');
+});
+//以下php/Lalavel 09課題
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('admin/profile/create','Admin\ProfileController@add');
+});
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('admin/profile/edit','Admin\ProfileController@edit');
+});
+    
