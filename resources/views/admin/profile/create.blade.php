@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale-1">
-        
-        <title>MyNews</title>
-    </head>
-    <body>
-        <h1>Mynews作成画面2</h1>
-    </body>
-</html>
+{{-- profile.blade.phpファイルを読み込み --}}
+@extends('layouts.profile')
+
+
+{{-- profile.blade.phpの@yield('title')に'プロフィール'を埋め込む --}}
+@section('profile', 'プロフィール')
+
+{{-- profile.blade.phpの@yield('content')に以下のタグを埋め込む --}}
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2>自己紹介</h2>
+            </div>
+        </div>
+    </div>
+@endsection
