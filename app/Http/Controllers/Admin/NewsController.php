@@ -20,7 +20,7 @@ class NewsController extends Controller
       // 以下を追記
       // Varidationを行う
       $this->validate($request, News::$rules);
-      
+      //ニュースクラスをインスタンス化している、＄に代入
       $news = new News;
       $form = $request->all();
       
@@ -28,6 +28,7 @@ class NewsController extends Controller
       
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
+        //Newsclassのインスタンスのインスタンス変数image_passにbasname($path)の結果を代入している
         $news->image_path = basename($path);
       } else {
           $news->image_path = null;
