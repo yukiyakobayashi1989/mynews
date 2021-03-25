@@ -35,15 +35,42 @@ class ProfileController extends Controller
         return redirect('admin/profile/create');
     }
     
-    public function edit()
-    {
-        return view('admin.profile.edit');
+    public function edit(Request $requst)
+    {   
+        //profile modelからデータを取得する
+        $profile = Profile::find($requst->id);
+        if (empty($profile)) {
+          abort(404);
+        }  
+        return view('admin.profile.edit', ['profile_form' => $profile]);
     }
     
-    public function update()
+    public function update(Request $request)
     {
-        return redirect('admin/profile/edit');
+        //php/laranel課題16　validationをかける
+        $this->validate($request, Profile::$rules);
+        //Profile　Modelからデータを取得する
+        $profile = Profile::find($request->id);
+        //送信されてきたフォームデータを格納する
+        $profile_form = $request->all();
+        unset($profile_form['_token']);
+        unset($profile_form['remove']);
+        
+        //該当するデータを上書きして保存する
+        $profile->fill($profile_form)->save();
+        
+        return redirect('admin/profile/create');
     }
+    
+    //php/Laravel 課題16、削除action
+    public function delete(Request $request)
+  {
+      // 該当するprofile Modelを取得
+      $profile = Profile::find($request->id);
+      // 削除する
+      $profile->delete();
+      return redirect('admin/profile/');
+  }  
 }
 
 
