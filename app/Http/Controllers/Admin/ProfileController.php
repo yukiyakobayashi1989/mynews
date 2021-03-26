@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 use App\Profile;
 
+//php/Laravel 17課題
+use App\Profilehistories;
+use Carbon\Carbon;
+
 class ProfileController extends Controller
 {
     //以下を追記
@@ -58,6 +62,12 @@ class ProfileController extends Controller
         
         //該当するデータを上書きして保存する
         $profile->fill($profile_form)->save();
+        
+        //php/Laravel 17課題、以下を追記
+        $history = new Profilehistories;
+        $history->profile_id = $profile->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
         
         return redirect('admin/profile/create');
     }
