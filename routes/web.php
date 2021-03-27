@@ -45,4 +45,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//php/Larvel 19 追記
+Route::get('/', 'Newscontroller@index');
