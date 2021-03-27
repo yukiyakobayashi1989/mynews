@@ -31,7 +31,7 @@
                         <div class="col-md-10">
                             <input type="checkbox"　name="gender" value="男">男
                             <input type="checkbox"　name="gender" value="女">女
-                            <input type="checkbox"　name="gender" value="どちらでもない！">どちらでもない！
+                            <input type="checkbox"　name="gender" value="どちらでもない！？">どちらでもない！？
                          </div>    
                     </div>
                     <div class="form-group row">
